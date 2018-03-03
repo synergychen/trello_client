@@ -1,5 +1,5 @@
-require "trello_client/version"
+require "trello/client"
+require "trello/board"
 
 module TrelloClient
-  # Your code goes here...
 end
