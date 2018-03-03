@@ -1,10 +1,10 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "trello/client"
+require "trello_client"
 
 Gem::Specification.new do |spec|
   spec.name          = "trello_client"
-  spec.version       = Trello::Client::VERSION
+  spec.version       = TrelloClient::VERSION
   spec.authors       = ["Chen Huang"]
   spec.email         = ["alan.tolearn@gmail.com"]
 
