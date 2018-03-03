@@ -3,7 +3,7 @@ require "trello/net_http_client"
 module Trello
   class Client
     BASE_URL = "https://api.trello.com"
-    VERSION = "0.1.2"
+    VERSION = "0.1.3"
 
     def initialize(key:, token:)
       raise unless key && token
