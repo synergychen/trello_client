@@ -1,24 +1,22 @@
-module Trello
-  class Board
-    def initialize(client)
-      @client = client
-    end
+require "trello/api_object"
 
+module Trello
+  class Board < ApiObject
     def fetch_all
-      @client.get(boards_url)
+      super
     end
 
     def fetch(id)
-      @client.get(board_url(id))
+      super(id)
     end
 
     private
 
-    def boards_url
+    def resources_url(parent_id = nil)
       "/1/members/me/boards"
     end
 
-    def board_url(id)
+    def resource_url(id)
       "/1/boards/#{id}"
     end
   end
