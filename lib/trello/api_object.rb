@@ -17,6 +17,11 @@ module Trello
       raise NotImplementedError
     end
 
+    def delete(id:)
+      raise unless id
+      @client.delete(resource_url(id))
+    end
+
     private
 
     def resources_url(**args)

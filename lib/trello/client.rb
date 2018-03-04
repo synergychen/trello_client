@@ -19,6 +19,10 @@ module Trello
       @http_client.perform(:post, with_key_and_token(path), body.to_json)
     end
 
+    def delete(path)
+      @http_client.perform(:delete, with_key_and_token(path))
+    end
+
     private
 
     def with_key_and_token(path)
