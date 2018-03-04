@@ -43,10 +43,23 @@ Get all boards
 board_client.fetch_all
 ```
 
-Get one board
+Get a board
 
 ```ruby
 board_client.fetch(id: <board-id>)
+```
+
+Add a board
+
+```ruby
+body = { name: "test", ... }
+board_client.add(body)
+```
+
+Delete a board
+
+```ruby
+board_client.delete(id: <board-id>)
 ```
 
 ### List
@@ -57,10 +70,17 @@ Get all lists of a board
 list_client.fetch_all(board_id: <board-id>)
 ```
 
-Get one list
+Get a list
 
 ```ruby
 list_client.fetch(id: <list-id>)
+```
+
+Add a list
+
+```ruby
+body = { name: "test", ... }
+list_client.add(board_id: <board-id>, body )
 ```
 
 ### Card
@@ -71,13 +91,13 @@ Get all cards of a list
 card_client.fetch_all(list_id: <list-id>)
 ```
 
-Get one card
+Get a card
 
 ```ruby
 card_client.fetch(id: <card-id>)
 ```
 
-Create a card
+Add a card
 
 ```ruby
 # options of body(as a hash):
@@ -88,6 +108,12 @@ body = { name: "test", desc: "description", ... }
 card_client.add(list_id: <list-id>, body)
 ```
 
+Delete a card
+
+```ruby
+card_client.delete(id: <card-id>)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -96,12 +122,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/trello_client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/tolearn2/trello_client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the TrelloClient project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/trello_client/blob/master/CODE_OF_CONDUCT.md).
