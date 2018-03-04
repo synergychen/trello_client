@@ -10,6 +10,14 @@ module Trello
       super
     end
 
+    def add(**args)
+      @client.post("/1/boards", args)
+    end
+
+    def delete(id:)
+      super
+    end
+
     private
 
     def resources_url(**args)

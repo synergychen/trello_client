@@ -23,4 +23,23 @@ describe Trello::Board do
       expect(@board.fetch(id: "123")).to eq mock_item
     end
   end
+
+  describe "#add" do
+    it "adds one board" do
+      uri_template = Addressable::Template.new "#{Trello::Client::BASE_URL}/1/boards{?key,token}{&other*}"
+      stub_request(:post, uri_template).
+        to_return(body: mock_item.to_json)
+      expect(@board.add(name: "test")).
+        to eq mock_item
+    end
+  end
+
+  describe "#delete" do
+    it "deletes a board" do
+      uri_template = Addressable::Template.new "#{Trello::Client::BASE_URL}/1/boards/{id}{?key,token}{&other*}"
+      stub_request(:delete, uri_template).
+        to_return(body: mock_item.to_json)
+      expect(@board.delete(id: "123")).to eq mock_item
+    end
+  end
 end
