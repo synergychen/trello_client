@@ -23,4 +23,14 @@ describe Trello::Card do
       expect(@card.fetch("123")).to eq mock_item
     end
   end
+
+  describe "#add" do
+    it "adds one card to a list" do
+      uri_template = Addressable::Template.new "#{Trello::Client::BASE_URL}/1/cards{?key,token}{&other*}"
+      stub_request(:post, uri_template).
+        to_return(body: mock_item.to_json)
+      expect(@card.add(list_id: "123", name: "test", desc: "test")).
+        to eq mock_item
+    end
+  end
 end

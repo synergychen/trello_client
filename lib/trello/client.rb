@@ -15,6 +15,10 @@ module Trello
       @http_client.perform(:get, with_key_and_token(path))
     end
 
+    def post(path, body = {})
+      @http_client.perform(:post, with_key_and_token(path), body.to_json)
+    end
+
     private
 
     def with_key_and_token(path)

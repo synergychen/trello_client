@@ -8,6 +8,10 @@ module Trello
       super(id)
     end
 
+    def add(list_id:, **args)
+      @client.post("/1/cards", args.merge(idList: list_id))
+    end
+
     private
 
     def resources_url(list_id)

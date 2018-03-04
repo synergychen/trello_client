@@ -12,6 +12,10 @@ module Trello
       @client.get(resource_url(id))
     end
 
+    def add(**args)
+      raise NotImplementedError
+    end
+
     private
 
     def resources_url(parent_id = nil)
