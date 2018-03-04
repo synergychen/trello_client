@@ -20,7 +20,7 @@ describe Trello::Board do
       uri_template = Addressable::Template.new "#{Trello::Client::BASE_URL}/1/boards/{id}{?key,token}{&other*}"
       stub_request(:get, uri_template).
         to_return(body: mock_item.to_json)
-      expect(@board.fetch("123")).to eq mock_item
+      expect(@board.fetch(id: "123")).to eq mock_item
     end
   end
 end

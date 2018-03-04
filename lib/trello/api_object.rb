@@ -4,11 +4,12 @@ module Trello
       @client = client
     end
 
-    def fetch_all(parent_id = nil)
-      @client.get(resources_url(parent_id))
+    def fetch_all(**args)
+      @client.get(resources_url(args))
     end
 
-    def fetch(id)
+    def fetch(id:)
+      raise unless id
       @client.get(resource_url(id))
     end
 
@@ -18,7 +19,7 @@ module Trello
 
     private
 
-    def resources_url(parent_id = nil)
+    def resources_url(**args)
       raise NotImplementedError
     end
 

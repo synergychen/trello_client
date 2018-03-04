@@ -1,17 +1,18 @@
 module Trello
   class List < ApiObject
-    def fetch_all(board_id)
-      super(board_id)
+    def fetch_all(**args)
+      raise unless args[:board_id]
+      super
     end
 
-    def fetch(id)
-      super(id)
+    def fetch(id:)
+      super
     end
 
     private
 
-    def resources_url(board_id)
-      "/1/boards/#{board_id}/lists"
+    def resources_url(**args)
+      "/1/boards/#{args[:board_id]}/lists"
     end
 
     def resource_url(id)

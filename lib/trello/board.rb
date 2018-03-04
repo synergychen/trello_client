@@ -6,13 +6,13 @@ module Trello
       super
     end
 
-    def fetch(id)
-      super(id)
+    def fetch(id:)
+      super
     end
 
     private
 
-    def resources_url(parent_id = nil)
+    def resources_url(**args)
       "/1/members/me/boards"
     end
 
