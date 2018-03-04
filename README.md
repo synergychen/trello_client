@@ -1,8 +1,6 @@
 # TrelloClient
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/trello_client`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Easy to use, non official Trello Client based on [Trello API Docs](https://trello.readme.io/docs/api-introduction).
 
 ## Installation
 
@@ -22,7 +20,73 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Get key and token
+
+If this is your first time using Trello API, get key and token from [here](https://trello.com/app-key).
+
+### Client
+
+Create board/list/card clients based on api key and token.
+
+```ruby
+client = Trello::Client.new(key: <your-key>, token: <your-token>)
+board_client = Trello::Board.new(client)
+list_client  = Trello::List.new(client)
+card_client  = Trello::Card.new(client)
+```
+
+### Board
+
+Get all boards
+
+```ruby
+board_client.fetch_all
+```
+
+Get one board
+
+```ruby
+board_client.fetch(id: <board-id>)
+```
+
+### List
+
+Get all lists of a board
+
+```ruby
+list_client.fetch_all(board_id: <board-id>)
+```
+
+Get one list
+
+```ruby
+list_client.fetch(id: <list-id>)
+```
+
+### Card
+
+Get all cards of a list
+
+```ruby
+card_client.fetch_all(list_id: <list-id>)
+```
+
+Get one card
+
+```ruby
+card_client.fetch(id: <card-id>)
+```
+
+Create a card
+
+```ruby
+# options of body(as a hash):
+#   - name: name of card
+#   - desc: description
+#   - ...
+body = { name: "test", desc: "description", ... }
+card_client.add(list_id: <list-id>, body)
+```
 
 ## Development
 
