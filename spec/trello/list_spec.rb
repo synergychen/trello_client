@@ -23,4 +23,14 @@ describe Trello::List do
       expect(@list.fetch(id: "123")).to eq mock_item
     end
   end
+
+  describe "#add" do
+    it "adds one list to a board" do
+      uri_template = Addressable::Template.new "#{Trello::Client::BASE_URL}/1/lists{?key,token}{&other*}"
+      stub_request(:post, uri_template).
+        to_return(body: mock_item.to_json)
+      expect(@list.add(board_id: "123", name: "test")).
+        to eq mock_item
+    end
+  end
 end
