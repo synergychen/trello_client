@@ -13,6 +13,10 @@ module Trello
       @client.post("/1/cards", args.merge(idList: list_id))
     end
 
+    def delete(id:)
+      super
+    end
+
     private
 
     def resources_url(**args)
